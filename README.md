@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ScreenMeter — 한국 영화관 스크린 비교
 
-## Getting Started
+CGV · 롯데시네마 · 메가박스 상영관 스크린을 **면적·가로·세로**로 비교하고, **사용자 제보 → 관리자 승인**으로 DB를 키우는 MVP입니다.
 
-First, run the development server:
+## 실행
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 비교: http://localhost:3000
+- 제보: http://localhost:3000/report
+- 관리: http://localhost:3000/admin (키: `dev-admin` 또는 `ADMIN_KEY`)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 데이터
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 지점·상영관 시드: `src/lib/data/seed-*.ts`
+- 런타임 제보/승인: `data/runtime-store.json` (로컬 파일)
+- 프로덕션용 Postgres 스키마: `supabase/migrations/20260309000000_initial.sql`
 
-## Learn More
+공식 통합 스크린 크기 API는 없습니다. 시드에는 **가로·세로가 출처와 함께 확인된 상영관만** 넣습니다(추정·빈 skeleton 없음).
 
-To learn more about Next.js, take a look at the following resources:
+포함 예:
+- CGV IMAX (위키백과 영화관 목록)
+- 롯데 월드타워 주요 관 (익무 수치), 신림 LED (보도)
+- 메가박스 코엑스 Dolby / MEGA LED (커뮤니티·보도)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+그 외 관은 제보 → 승인 후에만 목록에 올라갑니다.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 환경변수
 
-## Deploy on Vercel
+`.env.local` 예시:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+ADMIN_KEY=your-secret
+```
