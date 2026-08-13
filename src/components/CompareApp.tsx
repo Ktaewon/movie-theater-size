@@ -12,10 +12,11 @@ import {
   type Region,
   type ScreenType,
 } from "@/lib/types";
-import { formatArea, formatMeters } from "@/lib/format";
+import { formatArea, formatMeters, isSeatEstimate } from "@/lib/format";
 import { ScaleVisual } from "./ScaleVisual";
 import { CompareTray } from "./CompareTray";
 import { TrustBadge } from "./TrustBadge";
+import { OfficialSeatMapLink } from "./OfficialSeatMapLink";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -55,6 +56,7 @@ export function CompareApp({ initialScreens }: { initialScreens: ScreenView[] })
   const [region, setRegion] = useState<Region | "all">("all");
   const [type, setType] = useState<ScreenType | "all">("all");
   const [hasSize, setHasSize] = useState(true);
+  const [hideEstimates, setHideEstimates] = useState(false);
   const [sort, setSort] = useState<SortKey>("area");
   const [dir, setDir] = useState<SortDir>("desc");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
@@ -76,6 +78,7 @@ export function CompareApp({ initialScreens }: { initialScreens: ScreenView[] })
     if (region !== "all") list = list.filter((v) => v.theater.region === region);
     if (type !== "all") list = list.filter((v) => v.type === type);
     if (hasSize) list = list.filter((v) => v.areaM2 != null);
+    if (hideEstimates) list = list.filter((v) => !isSeatEstimate(v.measurement?.source));
 
     const mul = dir === "asc" ? 1 : -1;
     list.sort((a, b) => {
@@ -95,7 +98,7 @@ export function CompareApp({ initialScreens }: { initialScreens: ScreenView[] })
       return mul * (Number(av) - Number(bv));
     });
     return list;
-  }, [initialScreens, deferredQ, chain, region, type, hasSize, sort, dir]);
+  }, [initialScreens, deferredQ, chain, region, type, hasSize, hideEstimates, sort, dir]);
 
   const selected = useMemo(
     () =>
@@ -207,6 +210,10 @@ export function CompareApp({ initialScreens }: { initialScreens: ScreenView[] })
               <Checkbox checked={hasSize} onCheckedChange={(v) => setHasSize(v === true)} />
               크기 데이터가 있는 상영관만
             </label>
+            <label className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Checkbox checked={hideEstimates} onCheckedChange={(v) => setHideEstimates(v === true)} />
+              추정값 숨기기
+            </label>
             <div className="flex items-center gap-2">
               <span className="text-xs text-muted-foreground tabular-nums">
                 {filtered.length}개 · 선택 {selected.length}/4
@@ -266,6 +273,12 @@ export function CompareApp({ initialScreens }: { initialScreens: ScreenView[] })
                       <div className="text-xs text-muted-foreground">
                         {CHAIN_LABEL[s.theater.chain]} · {s.theater.region} {s.theater.city} ·{" "}
                         {s.name}
+                        {s.theater.officialUrl ? (
+                          <>
+                            {" · "}
+                            <OfficialSeatMapLink href={s.theater.officialUrl} compact />
+                          </>
+                        ) : null}
                       </div>
                     </TableCell>
                     <TableCell>
@@ -280,6 +293,11 @@ export function CompareApp({ initialScreens }: { initialScreens: ScreenView[] })
                         <>
                           {formatMeters(s.measurement?.widthM)} ×{" "}
                           {formatMeters(s.measurement?.heightM)}
+                          {isSeatEstimate(s.measurement?.source) ? (
+                            <span className="text-muted-foreground" title="좌석배치 기반 추정">
+                              *
+                            </span>
+                          ) : null}
                           {s.measurement?.widthScopeM ? (
                             <div className="text-[11px] text-muted-foreground">
                               SCOPE {formatMeters(s.measurement.widthScopeM)} ×{" "}

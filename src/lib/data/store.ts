@@ -115,7 +115,8 @@ function toView(store: RuntimeStore, screen: (typeof SCREENS)[number]): ScreenVi
   const theater = THEATERS.find((t) => t.id === screen.theaterId);
   if (!theater) return null;
   const measurement = approvedForScreen(store, screen.id);
-  // Public catalog: only screens with approved width×height and a cited source.
+  // Public catalog: approved width×height with a cited source.
+  // Generic placeholders stay out; seat-map estimates are allowed and marked in UI.
   if (
     !measurement ||
     measurement.widthM == null ||

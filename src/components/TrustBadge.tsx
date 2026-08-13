@@ -34,7 +34,7 @@ export function TrustBadge({
   if (compact) {
     return (
       <Badge variant={tone} className="font-normal">
-        {CONFIDENCE_LABEL[confidence]} · {formatDate(verifiedAt)}
+        {source === "seat_estimate" ? "추정" : CONFIDENCE_LABEL[confidence]} · {formatDate(verifiedAt)}
       </Badge>
     );
   }

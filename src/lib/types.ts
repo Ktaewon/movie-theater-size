@@ -17,6 +17,7 @@ export type SourceType =
   | "community"
   | "user_report"
   | "estimate"
+  | "seat_estimate"
   | "wiki";
 
 export type Confidence = "high" | "medium" | "low" | "unknown";
@@ -51,6 +52,8 @@ export interface Theater {
   address: string;
   lat?: number;
   lng?: number;
+  /** Official chain theater page — seat maps are shown there / in booking. */
+  officialUrl?: string;
 }
 
 export interface ScreenMeasurement {
@@ -145,6 +148,7 @@ export const SOURCE_LABEL: Record<SourceType, string> = {
   community: "커뮤니티",
   user_report: "사용자 제보",
   estimate: "추정",
+  seat_estimate: "좌석배치 추정",
   wiki: "위키",
 };
 

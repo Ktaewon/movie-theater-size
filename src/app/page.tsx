@@ -18,7 +18,7 @@ export default async function HomePage() {
           </h1>
           <p className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
             CGV · 롯데시네마 · 메가박스 특별관부터 면적·가로·세로를 정렬하고, 동일 스케일로
-            체감을 맞춥니다.
+            체감을 맞춥니다. 좌석배치 기반 추정값은 *로 표시합니다.
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">

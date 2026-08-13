@@ -42,10 +42,15 @@ export function confidenceFromSource(source: SourceType): Confidence {
     case "user_report":
       return "medium";
     case "estimate":
+    case "seat_estimate":
       return "low";
     default:
       return "unknown";
   }
+}
+
+export function isSeatEstimate(source?: SourceType | null): boolean {
+  return source === "seat_estimate";
 }
 
 export function uid(prefix: string): string {

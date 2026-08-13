@@ -30,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="mx-auto max-w-6xl px-4 text-center text-xs text-muted-foreground sm:px-6">
             스크린 규격은 참고용입니다. 리뉴얼·마스킹·실제 상영 비율에 따라 체감이 다를 수 있습니다.
             <br />
-            출처·최종 확인일을 함께 표기하며, 제보는 승인 후 반영됩니다.
+            출처·최종 확인일을 함께 표기하며, 제보는 승인 후 반영됩니다. *표시는 좌석배치·화면비 기반 추정입니다.
           </div>
         </footer>
         <Toaster />

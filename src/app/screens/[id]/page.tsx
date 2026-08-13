@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TrustBadge } from "@/components/TrustBadge";
 import { ScaleVisual } from "@/components/ScaleVisual";
+import { OfficialSeatMapLink } from "@/components/OfficialSeatMapLink";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -41,13 +42,18 @@ export default async function ScreenDetailPage({
           {screen.hallNumber ? ` · ${screen.hallNumber}` : ""}
         </p>
         <p className="text-sm text-muted-foreground">{screen.theater.address}</p>
+        {screen.theater.officialUrl ? (
+          <p className="text-xs text-muted-foreground">
+            공식 극장 페이지에서 회차를 고르면 해당 관의 좌석배치도를 볼 수 있습니다.
+          </p>
+        ) : null}
       </div>
 
       <div className="grid gap-3 sm:grid-cols-4">
         {[
           {
             label: "가로 × 세로",
-            value: `${formatMeters(screen.measurement?.widthM)} × ${formatMeters(screen.measurement?.heightM)}`,
+            value: `${formatMeters(screen.measurement?.widthM)} × ${formatMeters(screen.measurement?.heightM)}${screen.measurement?.source === "seat_estimate" ? "*" : ""}`,
           },
           { label: "면적", value: formatArea(screen.areaM2) },
           { label: "화면비", value: formatAspect(screen.aspectRatio) },
@@ -81,6 +87,11 @@ export default async function ScreenDetailPage({
         {screen.measurement?.note ? (
           <p className="text-sm text-muted-foreground">{screen.measurement.note}</p>
         ) : null}
+        {screen.measurement?.source === "seat_estimate" ? (
+          <p className="text-xs text-muted-foreground">
+            * 좌석배치와 커뮤니티 화면비로 추정한 값입니다. 실측·공식 수치가 있으면 제보해 주세요.
+          </p>
+        ) : null}
         {screen.measurement?.sourceUrl ? (
           <Button asChild variant="link" className="h-auto px-0">
             <a href={screen.measurement.sourceUrl} target="_blank" rel="noreferrer">
@@ -109,6 +120,9 @@ export default async function ScreenDetailPage({
       )}
 
       <div className="flex flex-wrap gap-2">
+        {screen.theater.officialUrl ? (
+          <OfficialSeatMapLink href={screen.theater.officialUrl} />
+        ) : null}
         <Button asChild variant="outline">
           <Link href={`/report?screenId=${screen.id}`}>수치 수정 제보</Link>
         </Button>
