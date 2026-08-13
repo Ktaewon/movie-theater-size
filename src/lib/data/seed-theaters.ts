@@ -8,6 +8,7 @@ const ALL_THEATERS: Theater[] = [
   { id: "cgv-ilsan", chain: "cgv", name: "CGV 일산", region: "경기", city: "고양시", address: "경기 고양시 일산동구 정발산로 24" },
   { id: "cgv-pangyo", chain: "cgv", name: "CGV 판교", region: "경기", city: "성남시", address: "경기 성남시 분당구 판교역로 146" },
   { id: "cgv-gwanggyo", chain: "cgv", name: "CGV 광교", region: "경기", city: "수원시", address: "경기 수원시 영통구 광교중앙로 124" },
+  { id: "cgv-wirye", chain: "cgv", name: "CGV 스타필드시티위례", region: "경기", city: "하남시", address: "경기 하남시 위례대로 200" },
   { id: "cgv-bucheon", chain: "cgv", name: "CGV 소풍", region: "경기", city: "부천시", address: "경기 부천시 길주로 1" },
   { id: "cgv-uijeongbu", chain: "cgv", name: "CGV 의정부", region: "경기", city: "의정부시", address: "경기 의정부시 평화로 525" },
   { id: "cgv-incheon", chain: "cgv", name: "CGV 인천", region: "인천", city: "남동구", address: "인천 남동구 예술로 198" },
