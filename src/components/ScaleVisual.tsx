@@ -6,11 +6,11 @@ import { CHAIN_LABEL, TYPE_LABEL } from "@/lib/types";
 import { formatArea, formatMeters } from "@/lib/format";
 
 const palette = [
-  "bg-foreground/90",
-  "bg-chart-1",
-  "bg-chart-2",
-  "bg-chart-3",
-  "bg-chart-4",
+  { fill: "bg-foreground/20", border: "border-foreground", label: "text-foreground" },
+  { fill: "bg-chart-1/30", border: "border-chart-1", label: "text-chart-1" },
+  { fill: "bg-chart-2/30", border: "border-chart-2", label: "text-chart-2" },
+  { fill: "bg-chart-3/35", border: "border-chart-3", label: "text-chart-3" },
+  { fill: "bg-chart-4/30", border: "border-chart-4", label: "text-chart-4" },
 ];
 
 export function ScaleVisual({
@@ -56,14 +56,15 @@ export function ScaleVisual({
               const w = Math.max(s.measurement!.widthM! * scale, 24);
               const h = Math.max(s.measurement!.heightM! * scale, 16);
               const short = s.theater.name.replace(/^(CGV|롯데시네마|메가박스)\s*/, "");
+              const color = palette[i % palette.length];
               return (
                 <div key={s.id} className="flex max-w-[140px] flex-col items-center gap-2">
                   <div
-                    className={`relative rounded-sm border border-border/60 shadow-sm ${palette[i % palette.length]}`}
+                    className={`relative rounded-sm border-2 ${color.fill} ${color.border}`}
                     style={{ width: w, height: h }}
                     title={`${s.theater.name} ${s.name}`}
                   >
-                    <span className="absolute left-1 top-1 text-[10px] font-medium text-background/80">
+                    <span className={`absolute left-1.5 top-1 text-[10px] font-semibold ${color.label}`}>
                       {i + 1}
                     </span>
                   </div>
