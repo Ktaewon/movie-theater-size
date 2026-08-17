@@ -1,17 +1,55 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TrustBadge } from "@/components/TrustBadge";
 import { ScaleVisual } from "@/components/ScaleVisual";
 import { OfficialSeatMapLink } from "@/components/OfficialSeatMapLink";
+import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { getScreenView, listHistory } from "@/lib/data/store";
 import { formatArea, formatAspect, formatDate, formatMeters } from "@/lib/format";
+import { SITE_URL } from "@/lib/site";
 import { CHAIN_LABEL, TYPE_LABEL } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const screen = await getScreenView(id);
+  if (!screen) return { title: "상영관을 찾을 수 없습니다" };
+
+  const size =
+    screen.measurement?.widthM != null && screen.measurement?.heightM != null
+      ? `${formatMeters(screen.measurement.widthM)} × ${formatMeters(screen.measurement.heightM)}`
+      : "크기 미확인";
+  const title = `${screen.theater.name} ${screen.name} 스크린 크기`;
+  const description = `${screen.theater.region} ${screen.theater.city} ${CHAIN_LABEL[screen.theater.chain]} ${screen.name} · ${size} · ${formatArea(screen.areaM2)}`;
+  const url = `/screens/${id}`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      title,
+      description,
+      url,
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+    },
+  };
+}
 
 export default async function ScreenDetailPage({
   params,
@@ -22,9 +60,56 @@ export default async function ScreenDetailPage({
   const screen = await getScreenView(id);
   if (!screen) notFound();
   const history = await listHistory(id);
+  const pageUrl = `${SITE_URL}/screens/${id}`;
 
   return (
     <div className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:px-6 sm:py-10">
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "MovieTheater",
+            name: screen.theater.name,
+            url: pageUrl,
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: screen.theater.address,
+              addressLocality: screen.theater.city,
+              addressRegion: screen.theater.region,
+              addressCountry: "KR",
+            },
+            brand: CHAIN_LABEL[screen.theater.chain],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Dataset",
+            name: `${screen.theater.name} ${screen.name} 스크린 크기`,
+            description: `${TYPE_LABEL[screen.type]} 상영관 가로·세로·면적`,
+            url: pageUrl,
+            inLanguage: "ko-KR",
+            variableMeasured: [
+              {
+                "@type": "PropertyValue",
+                name: "width",
+                value: screen.measurement?.widthM ?? undefined,
+                unitCode: "MTR",
+              },
+              {
+                "@type": "PropertyValue",
+                name: "height",
+                value: screen.measurement?.heightM ?? undefined,
+                unitCode: "MTR",
+              },
+              {
+                "@type": "PropertyValue",
+                name: "area",
+                value: screen.areaM2 ?? undefined,
+                unitText: "m²",
+              },
+            ],
+          },
+        ]}
+      />
       <div className="space-y-3">
         <Button asChild variant="ghost" size="sm" className="-ml-2 text-muted-foreground">
           <Link href="/#compare">← 비교로</Link>

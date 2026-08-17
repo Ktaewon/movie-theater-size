@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import { ReportForm } from "@/components/ReportForm";
 import { getScreenView, listTheaters } from "@/lib/data/store";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "스크린 제보",
+  description:
+    "영화관 스크린 가로·세로 수치를 제보해 주세요. 관리자 승인 후 비교에 반영됩니다.",
+  robots: { index: false, follow: true },
+  alternates: { canonical: "/report" },
+};
 
 export default async function ReportPage({
   searchParams,
