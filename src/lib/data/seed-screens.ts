@@ -11,8 +11,12 @@ export const SCREENS: Screen[] = [
   { id: "cgv-ulsan-imax", theaterId: "cgv-ulsan", name: "IMAX", type: "imax" },
   { id: "cgv-wangsimni-imax", theaterId: "cgv-wangsimni", name: "IMAX", type: "imax" },
   { id: "cgv-pangyo-imax", theaterId: "cgv-pangyo", name: "IMAX", type: "imax" },
-  { id: "cgv-ilsan-imax", theaterId: "cgv-ilsan", name: "IMAX", type: "imax" },
+  { id: "cgv-ilsan-imax", theaterId: "cgv-ilsan", name: "IMAX", hallNumber: "9", type: "imax", seatCount: 250 },
+  { id: "cgv-ilsan-4dx", theaterId: "cgv-ilsan", name: "3관 ULTRA 4DX", hallNumber: "3", type: "4dx", seatCount: 120 },
+  { id: "cgv-ilsan-4", theaterId: "cgv-ilsan", name: "4관", hallNumber: "4", type: "standard", seatCount: 271 },
+  { id: "cgv-ilsan-screenx", theaterId: "cgv-ilsan", name: "5관 ScreenX", hallNumber: "5", type: "screenx", seatCount: 90 },
   { id: "cgv-gwanggyo-imax", theaterId: "cgv-gwanggyo", name: "IMAX", type: "imax" },
+  { id: "cgv-gwanggyo-4dx", theaterId: "cgv-gwanggyo", name: "5관 ULTRA 4DX", hallNumber: "5", type: "4dx" },
   { id: "cgv-wirye-imax", theaterId: "cgv-wirye", name: "IMAX", hallNumber: "5", type: "imax", seatCount: 207 },
   { id: "cgv-daegu-imax", theaterId: "cgv-daegu", name: "IMAX", type: "imax" },
   {
@@ -71,6 +75,7 @@ export const SCREENS: Screen[] = [
   { id: "cgv-chuncheon-imax", theaterId: "cgv-chuncheon", name: "IMAX", type: "imax" },
   { id: "cgv-bucheon-imax", theaterId: "cgv-bucheon", name: "IMAX", type: "imax" },
   { id: "cgv-uijeongbu-imax", theaterId: "cgv-uijeongbu", name: "IMAX", type: "imax" },
+  { id: "cgv-uijeongbu-screenx", theaterId: "cgv-uijeongbu", name: "7관 ScreenX", hallNumber: "7", type: "screenx", seatCount: 195 },
   { id: "cgv-daejeon-imax", theaterId: "cgv-daejeon", name: "IMAX", type: "imax" },
   { id: "cgv-changwon-imax", theaterId: "cgv-changwon", name: "IMAX", type: "imax" },
   { id: "cgv-cheongju-imax", theaterId: "cgv-cheongju", name: "IMAX", type: "imax", seatCount: 258 },
@@ -78,6 +83,7 @@ export const SCREENS: Screen[] = [
   { id: "cgv-yeongdeungpo-imax", theaterId: "cgv-yeongdeungpo", name: "IMAX", type: "imax" },
   { id: "cgv-dongtan-imax", theaterId: "cgv-dongtan", name: "IMAX", hallNumber: "7", type: "imax" },
   { id: "cgv-pyeongtaek-imax", theaterId: "cgv-pyeongtaek", name: "IMAX", type: "imax" },
+  { id: "cgv-pyeongtaek-screenx", theaterId: "cgv-pyeongtaek", name: "4관 ScreenX", hallNumber: "4", type: "screenx" },
   { id: "cgv-suncheon-imax", theaterId: "cgv-suncheon", name: "IMAX", type: "imax" },
   { id: "cgv-cheonan-terminal-imax", theaterId: "cgv-cheonan-terminal", name: "IMAX", type: "imax" },
   { id: "cgv-daejeon-terminal-imax", theaterId: "cgv-daejeon-terminal", name: "IMAX", type: "imax" },
@@ -152,11 +158,59 @@ export const SCREENS: Screen[] = [
     type: "superplex",
   },
   {
+    id: "lotte-suwon-superplex",
+    theaterId: "lotte-suwon",
+    name: "슈퍼플렉스",
+    hallNumber: "1",
+    type: "superplex",
+    seatCount: 204,
+  },
+  {
     id: "lotte-suwon-sled",
     theaterId: "lotte-suwon",
     name: "SLED (6관)",
     hallNumber: "6",
     type: "premium",
+  },
+  {
+    id: "lotte-suji-superplex",
+    theaterId: "lotte-suji",
+    name: "슈퍼플렉스",
+    hallNumber: "1",
+    type: "superplex",
+    seatCount: 396,
+  },
+  {
+    id: "lotte-suji-2",
+    theaterId: "lotte-suji",
+    name: "2관",
+    hallNumber: "2",
+    type: "standard",
+    seatCount: 279,
+  },
+  {
+    id: "lotte-gwangmyeong-superplex",
+    theaterId: "lotte-gwangmyeong-outlet",
+    name: "슈퍼플렉스",
+    hallNumber: "1",
+    type: "superplex",
+    seatCount: 405,
+  },
+  {
+    id: "lotte-dongtan-superplex",
+    theaterId: "lotte-dongtan",
+    name: "슈퍼플렉스",
+    hallNumber: "4",
+    type: "superplex",
+    seatCount: 341,
+  },
+  {
+    id: "mega-hanam-dolby",
+    theaterId: "mega-hanam",
+    name: "Dolby Cinema (7관)",
+    hallNumber: "7",
+    type: "dolby",
+    seatCount: 336,
   },
 
   // Megabox — press / community with both dimensions
@@ -246,6 +300,30 @@ export const SCREENS: Screen[] = [
   { id: "lotte-pangyo-5", theaterId: "lotte-pangyo", name: "5관", hallNumber: "5", type: "standard", seatCount: 140 },
   { id: "lotte-pangyo-6", theaterId: "lotte-pangyo", name: "6관", hallNumber: "6", type: "standard", seatCount: 216 },
   { id: "lotte-pangyo-7", theaterId: "lotte-pangyo", name: "7관", hallNumber: "7", type: "standard", seatCount: 248 },
+
+  // 분당·경기 추가 — 좌석수·인용 수치
+  { id: "cgv-seohyeon-1", theaterId: "cgv-seohyeon", name: "1관", hallNumber: "1", type: "standard", seatCount: 108 },
+  { id: "cgv-seohyeon-2", theaterId: "cgv-seohyeon", name: "2관", hallNumber: "2", type: "standard", seatCount: 131 },
+  { id: "cgv-seohyeon-3", theaterId: "cgv-seohyeon", name: "3관", hallNumber: "3", type: "standard", seatCount: 108 },
+  { id: "cgv-seohyeon-4", theaterId: "cgv-seohyeon", name: "4관", hallNumber: "4", type: "standard", seatCount: 108 },
+  { id: "cgv-yatap-1", theaterId: "cgv-yatap", name: "1관", hallNumber: "1", type: "standard", seatCount: 149 },
+  { id: "cgv-yatap-2", theaterId: "cgv-yatap", name: "2관", hallNumber: "2", type: "standard", seatCount: 199 },
+  { id: "cgv-yatap-3", theaterId: "cgv-yatap", name: "3관", hallNumber: "3", type: "standard", seatCount: 159 },
+  { id: "cgv-yatap-4", theaterId: "cgv-yatap", name: "4관", hallNumber: "4", type: "standard", seatCount: 164 },
+  { id: "cgv-yatap-5", theaterId: "cgv-yatap", name: "5관", hallNumber: "5", type: "standard", seatCount: 160 },
+  { id: "cgv-yatap-6", theaterId: "cgv-yatap", name: "6관", hallNumber: "6", type: "standard", seatCount: 156 },
+  { id: "cgv-yatap-7", theaterId: "cgv-yatap", name: "7관", hallNumber: "7", type: "standard", seatCount: 178 },
+  { id: "cgv-yatap-8", theaterId: "cgv-yatap", name: "8관", hallNumber: "8", type: "standard", seatCount: 147 },
+  { id: "cgv-bucheon-jungdong-4dx", theaterId: "cgv-bucheon-jungdong", name: "1관 4DX", hallNumber: "1", type: "4dx", seatCount: 132 },
+  { id: "cgv-bucheon-jungdong-screenx", theaterId: "cgv-bucheon-jungdong", name: "8관 ScreenX", hallNumber: "8", type: "screenx", seatCount: 85 },
+  { id: "cgv-gimpo-screenx", theaterId: "cgv-gimpo", name: "4관 ScreenX", hallNumber: "4", type: "screenx", seatCount: 75 },
+  { id: "cgv-baegot-screenx", theaterId: "cgv-baegot", name: "2관 ScreenX", hallNumber: "2", type: "screenx", seatCount: 89 },
+  { id: "cgv-shinsegae-gyeonggi-tempur", theaterId: "cgv-shinsegae-gyeonggi", name: "1관 템퍼시네마", hallNumber: "1", type: "suite", seatCount: 22 },
+  { id: "cgv-shinsegae-gyeonggi-gold", theaterId: "cgv-shinsegae-gyeonggi", name: "2관 골드클래스", hallNumber: "2", type: "suite", seatCount: 40 },
+  { id: "cgv-shinsegae-gyeonggi-atmos", theaterId: "cgv-shinsegae-gyeonggi", name: "3관 Dolby Atmos", hallNumber: "3", type: "premium", seatCount: 315 },
+  { id: "cgv-shinsegae-gyeonggi-4", theaterId: "cgv-shinsegae-gyeonggi", name: "4관 프리미엄", hallNumber: "4", type: "premium", seatCount: 168 },
+  { id: "cgv-shinsegae-gyeonggi-5", theaterId: "cgv-shinsegae-gyeonggi", name: "5관 프리미엄", hallNumber: "5", type: "premium", seatCount: 45 },
+  { id: "cgv-shinsegae-gyeonggi-4dx", theaterId: "cgv-shinsegae-gyeonggi", name: "6관 4DX", hallNumber: "6", type: "4dx", seatCount: 76 },
 ];
 
 const ts = (date: string) => `${date}T00:00:00.000Z`;
@@ -256,6 +334,20 @@ const NAMU_ORI = "https://namu.wiki/w/CGV%20%EC%98%A4%EB%A6%AC";
 const NAMU_BUNDANG = "https://namu.wiki/w/%EB%A9%94%EA%B0%80%EB%B0%95%EC%8A%A4%20%EB%B6%84%EB%8B%B9";
 const NAMU_LOTTE_PANGYO =
   "https://namu.wiki/w/%EB%A1%AF%EB%8D%B0%EC%8B%9C%EB%84%A4%EB%A7%88%20%ED%8C%90%EA%B5%90(%EC%B0%BD%EC%A1%B0%EA%B2%BD%EC%A0%9C%EB%B0%B8%EB%A6%AC)";
+const NAMU_SEOHYEON = "https://namu.wiki/w/CGV%20%EC%84%9C%ED%98%84";
+const NAMU_YATAP = "https://namu.wiki/w/CGV%20%EC%95%BC%ED%83%91";
+const NAMU_SUJI = "https://namu.wiki/w/%EB%A1%AF%EB%8D%B0%EC%8B%9C%EB%84%A4%EB%A7%88%20%EC%88%98%EC%A7%80";
+const NAMU_GWANGMYEONG =
+  "https://namu.wiki/w/%EB%A1%AF%EB%8D%B0%EC%8B%9C%EB%84%A4%EB%A7%88%20%EA%B4%91%EB%AA%85%EC%95%84%EC%9A%B8%EB%A0%9B";
+const NAMU_ILSAN = "https://namu.wiki/w/CGV%20%EC%9D%BC%EC%82%B0";
+const NAMU_LOTTE_DONGTAN =
+  "https://namu.wiki/w/%EB%A1%AF%EB%8D%B0%EC%8B%9C%EB%84%A4%EB%A7%88%20%EB%8F%99%ED%83%84";
+const NAMU_BUCHEON = "https://namu.wiki/w/CGV%20%EB%B6%80%EC%B2%9C";
+const NAMU_BAEGOT = "https://namu.wiki/w/CGV%20%EB%B0%B0%EA%B3%A7";
+const NAMU_GIMPO = "https://namu.wiki/w/CGV%20%EA%B9%80%ED%8F%AC";
+const NAMU_UIJEONGBU = "https://namu.wiki/w/CGV%20%EC%9D%98%EC%A0%95%EB%B6%80";
+const NAMU_SHINSEGAE_GYEONGGI =
+  "https://namu.wiki/w/CGV%20%EC%8B%A0%EC%84%B8%EA%B3%84%EA%B2%BD%EA%B8%B0";
 
 function imax(
   id: string,
@@ -439,6 +531,39 @@ export const SEED_MEASUREMENTS: ScreenMeasurement[] = [
   layoutEst("m-lotte-pangyo-7", "lotte-pangyo-7", 10.8, 5.8, NAMU_LOTTE_PANGYO, "2026-08-13", "248석 · 최장열 약 18석 · 지점 내 가장 큰 일반관"),
   layoutEst("m-lotte-pangyo-2", "lotte-pangyo-2", 6.0, 3.2, NAMU_LOTTE_PANGYO, "2026-08-13", "씨네컴포트 55석 · 리클라이너 피치 0.70 · 최장열 약 8석"),
   layoutEst("m-lotte-pangyo-3", "lotte-pangyo-3", 6.0, 3.2, NAMU_LOTTE_PANGYO, "2026-08-13", "씨네컴포트 52석 · 2관과 비슷한 소형"),
+
+  // 경기도 — 인용 WxH + 좌석수 열폭 추정
+  layoutEst("m-seohyeon-1", "cgv-seohyeon-1", 6.5, 3.5, NAMU_SEOHYEON, "2026-08-13", "108석 · 오리 7·8관급 소형 플랫"),
+  layoutEst("m-seohyeon-3", "cgv-seohyeon-3", 6.5, 3.5, NAMU_SEOHYEON, "2026-08-13", "108석 · 1관과 동일 규모"),
+  layoutEst("m-seohyeon-4", "cgv-seohyeon-4", 6.5, 3.5, NAMU_SEOHYEON, "2026-08-13", "108석 · 1관과 동일 규모"),
+  layoutEst("m-seohyeon-2", "cgv-seohyeon-2", 7.1, 3.8, NAMU_SEOHYEON, "2026-08-13", "131석 · 오리 3관급 소형 플랫"),
+  layoutEst("m-yatap-8", "cgv-yatap-8", 8.4, 4.5, NAMU_YATAP, "2026-08-13", "147석 · 최장열 약 15석 · 플랫 1.85:1"),
+  layoutEst("m-yatap-1", "cgv-yatap-1", 8.5, 4.6, NAMU_YATAP, "2026-08-13", "149석 · 분당 2관급"),
+  layoutEst("m-yatap-6", "cgv-yatap-6", 8.7, 4.7, NAMU_YATAP, "2026-08-13", "156석 · 2026-09 ScreenX 전환 예정인 일반관 열폭"),
+  layoutEst("m-yatap-3", "cgv-yatap-3", 8.8, 4.8, NAMU_YATAP, "2026-08-13", "159석 · 최장열 약 15석"),
+  layoutEst("m-yatap-5", "cgv-yatap-5", 8.8, 4.8, NAMU_YATAP, "2026-08-13", "160석 · 3관과 비슷한 열폭"),
+  layoutEst("m-yatap-4", "cgv-yatap-4", 8.9, 4.8, NAMU_YATAP, "2026-08-13", "164석"),
+  layoutEst("m-yatap-7", "cgv-yatap-7", 9.3, 5.0, NAMU_YATAP, "2026-08-13", "178석 · 최장열 약 16석"),
+  layoutEst("m-yatap-2", "cgv-yatap-2", 9.8, 5.3, NAMU_YATAP, "2026-08-13", "199석 · 지점 내 가장 큰 일반관"),
+  layoutEst("m-suji-2", "lotte-suji-2", 11.3, 6.1, NAMU_SUJI, "2026-08-13", "279석 · 최장열 약 20석 · 플랫 1.85:1"),
+  layoutEst("m-suji-superplex", "lotte-suji-superplex", 19.0, 8.0, NAMU_SUJI, "2026-08-13", "나무위키 추측 19.0×8.0 · 396석 · 시네마스코프"),
+  layoutEst("m-dongtan-superplex", "lotte-dongtan-superplex", 16.4, 7.0, NAMU_LOTTE_DONGTAN, "2026-08-13", "341석 · 수지 슈플(396석·19m) 대비 열폭 환산 · 중대형 스코프 2.35:1"),
+  layoutEst("m-ilsan-4", "cgv-ilsan-4", 11.3, 6.1, NAMU_ILSAN, "2026-08-13", "271석 · 지점 유일 일반석 대형관 · 플랫 1.85:1"),
+  layoutEst("m-ilsan-sx", "cgv-ilsan-screenx", 10.0, 5.4, NAMU_ILSAN, "2026-08-13", "구 209석 ScreenX 열폭 · 리클라이너(90석) 전환 후에도 스크린 동일 가정"),
+  layoutEst("m-ilsan-4dx", "cgv-ilsan-4dx", 9.5, 5.1, NAMU_ILSAN, "2026-08-13", "120석 ULTRA 4DX · 판교 4DX(148석·12.3m)보다 소형 · 수퍼비콘 소형 플랫"),
+  layoutEst("m-uijeongbu-sx", "cgv-uijeongbu-screenx", 9.8, 5.3, NAMU_UIJEONGBU, "2026-08-13", "195석 ScreenX · 야탑 2관급 중형 플랫"),
+  layoutEst("m-bucheon-4dx", "cgv-bucheon-jungdong-4dx", 9.0, 4.9, NAMU_BUCHEON, "2026-08-13", "132석 4DX · 수퍼비콘 소형 플랫 · 추천좌석 3~10번"),
+  layoutEst("m-bucheon-sx", "cgv-bucheon-jungdong-screenx", 9.2, 5.0, NAMU_BUCHEON, "2026-08-13", "구 169석 ScreenX 열폭 · 리클라이너(85석) 전환 후에도 스크린 동일 가정"),
+  layoutEst("m-baegot-sx", "cgv-baegot-screenx", 9.5, 5.1, NAMU_BAEGOT, "2026-08-13", "구 184석 일반관 열폭 · 리클라이너 ScreenX(89석) 전환 후에도 스크린 동일 가정"),
+  layoutEst("m-gimpo-sx", "cgv-gimpo-screenx", 8.5, 4.6, NAMU_GIMPO, "2026-08-13", "구 154석 일반관 열폭 · 리클라이너 ScreenX(75석) 전환 후에도 스크린 동일 가정"),
+  layoutEst("m-shinsegae-gyeonggi-tempur", "cgv-shinsegae-gyeonggi-tempur", 5.4, 2.9, NAMU_SHINSEGAE_GYEONGGI, "2026-08-13", "템퍼시네마 22석 · 판교 템퍼(34석·6.1m)보다 소형 플랫"),
+  layoutEst("m-shinsegae-gyeonggi-gold", "cgv-shinsegae-gyeonggi-gold", 6.0, 3.2, NAMU_SHINSEGAE_GYEONGGI, "2026-08-13", "골드클래스 40석 · 씨네컴포트급 소형 플랫"),
+  layoutEst("m-shinsegae-gyeonggi-atmos", "cgv-shinsegae-gyeonggi-atmos", 12.2, 5.2, NAMU_SHINSEGAE_GYEONGGI, "2026-08-13", "315석 Dolby Atmos · 최장열 약 21석·통로2 · 시네마스코프 2.35:1"),
+  layoutEst("m-shinsegae-gyeonggi-4", "cgv-shinsegae-gyeonggi-4", 8.9, 4.8, NAMU_SHINSEGAE_GYEONGGI, "2026-08-13", "프리미엄 168석 · 야탑 4관급 열폭 · 플랫 1.85:1"),
+  layoutEst("m-shinsegae-gyeonggi-5", "cgv-shinsegae-gyeonggi-5", 6.0, 3.2, NAMU_SHINSEGAE_GYEONGGI, "2026-08-13", "프리미엄 45석 · 소형 프라이빗"),
+  layoutEst("m-shinsegae-gyeonggi-4dx", "cgv-shinsegae-gyeonggi-4dx", 8.5, 4.6, NAMU_SHINSEGAE_GYEONGGI, "2026-08-13", "76석 4DX · 추천 중앙블록 5~8번 · 소형 플랫"),
+  seatEst("m-gwanggyo-4dx", "cgv-gwanggyo-4dx", 12.2, 6.6, "223751926711", "2025-02-10", "5관 ULTRA 4DX · 추천 6~12번 · 중형 플랫 · 판교 4DX와 비슷한 열폭"),
+  seatEst("m-pyeongtaek-sx", "cgv-pyeongtaek-screenx", 9.5, 5.1, "224037023771", "2025-10-10", "4관 ScreenX · 추천 5~12번 · 중형 플랫 · 리클라이너"),
 
   // 대구 IMAX — 동성로 폐점 후 칠성로 이전 관 (옛 20.4×11 아님)
   {
@@ -683,5 +808,50 @@ export const SEED_MEASUREMENTS: ScreenMeasurement[] = [
     status: "approved",
     note: "1.85:1 · 구 CGV 수원 IMAX 리뉴얼관",
     createdAt: ts("2025-08-12"),
+  },
+  {
+    id: "m-hanam-dolby",
+    screenId: "mega-hanam-dolby",
+    widthM: 21.5,
+    heightM: 11.9,
+    seatCount: 336,
+    source: "community",
+    sourceLabel: "커뮤니티 돌비 스크린 수치 · 하남 최대 돌비",
+    sourceUrl: "https://yebom1005.tistory.com/54",
+    confidence: "medium",
+    verifiedAt: ts("2025-11-15"),
+    status: "approved",
+    note: "1.85:1 · 7관 · 국내 돌비시네마 최대 규모로 알려짐",
+    createdAt: ts("2025-11-15"),
+  },
+  {
+    id: "m-gwangmyeong-superplex",
+    screenId: "lotte-gwangmyeong-superplex",
+    widthM: 17.2,
+    heightM: 9.3,
+    seatCount: 405,
+    source: "wiki",
+    sourceLabel: "나무위키 롯데시네마 광명아울렛",
+    sourceUrl: NAMU_GWANGMYEONG,
+    confidence: "medium",
+    verifiedAt: ts("2026-08-13"),
+    status: "approved",
+    note: "1관 슈퍼플렉스 · 비스타비전 대형 · Dolby Atmos",
+    createdAt: ts("2026-08-13"),
+  },
+  {
+    id: "m-suwon-superplex",
+    screenId: "lotte-suwon-superplex",
+    widthM: 21,
+    heightM: 9,
+    seatCount: 204,
+    source: "press",
+    sourceLabel: "롯데시네마 수원 슈퍼플렉스 리뉴얼 보도 · 가로 21m",
+    sourceUrl: "https://www.newscj.com/news/articleView.html?idxno=3120657",
+    confidence: "medium",
+    verifiedAt: ts("2024-03-21"),
+    status: "approved",
+    note: "보도 가로 21m 와이드 스크린 · 수퍼비콘 대형 스코프(2.35:1)로 세로 9m 환산",
+    createdAt: ts("2024-03-21"),
   },
 ];

@@ -18,9 +18,15 @@ const ALL_THEATERS: Theater[] = [
   { id: "cgv-ilsan", chain: "cgv", name: "CGV 일산", region: "경기", city: "고양시", address: "경기 고양시 일산동구 정발산로 24", officialUrl: cgv("0054") },
   { id: "cgv-pangyo", chain: "cgv", name: "CGV 판교", region: "경기", city: "성남시", address: "경기 성남시 분당구 판교역로 146", officialUrl: cgv("0181") },
   { id: "cgv-ori", chain: "cgv", name: "CGV 오리", region: "경기", city: "성남시", address: "경기 성남시 분당구 탄천상로151번길 20", officialUrl: cgv("0004") },
+  { id: "cgv-shinsegae-gyeonggi", chain: "cgv", name: "CGV 신세계경기", region: "경기", city: "용인시", address: "경기 용인시 수지구 포은대로 536", officialUrl: cgv("0055") },
+  { id: "cgv-seohyeon", chain: "cgv", name: "CGV 서현", region: "경기", city: "성남시", address: "경기 성남시 분당구 서현로180번길 19", officialUrl: cgv("0196") },
+  { id: "cgv-yatap", chain: "cgv", name: "CGV 야탑", region: "경기", city: "성남시", address: "경기 성남시 분당구 성남대로925번길 16", officialUrl: cgv("0003") },
   { id: "cgv-gwanggyo", chain: "cgv", name: "CGV 광교", region: "경기", city: "수원시", address: "경기 수원시 영통구 광교중앙로 124", officialUrl: cgv("0257") },
   { id: "cgv-wirye", chain: "cgv", name: "CGV 스타필드시티위례", region: "경기", city: "하남시", address: "경기 하남시 위례대로 200", officialUrl: cgv("0274") },
   { id: "cgv-bucheon", chain: "cgv", name: "CGV 소풍", region: "경기", city: "부천시", address: "경기 부천시 길주로 1", officialUrl: cgv("0143") },
+  { id: "cgv-bucheon-jungdong", chain: "cgv", name: "CGV 부천", region: "경기", city: "부천시", address: "경기 부천시 원미구 길주로 180", officialUrl: cgv("0015") },
+  { id: "cgv-gimpo", chain: "cgv", name: "CGV 김포", region: "경기", city: "김포시", address: "경기 김포시 풍무로 128", officialUrl: cgv("0278") },
+  { id: "cgv-baegot", chain: "cgv", name: "CGV 배곧", region: "경기", city: "시흥시", address: "경기 시흥시 서울대학로278번길 61", officialUrl: cgv("0226") },
   { id: "cgv-uijeongbu", chain: "cgv", name: "CGV 의정부", region: "경기", city: "의정부시", address: "경기 의정부시 평화로 525", officialUrl: cgv("0113") },
   { id: "cgv-incheon", chain: "cgv", name: "CGV 인천", region: "인천", city: "남동구", address: "인천 남동구 예술로 198", officialUrl: cgv("0002") },
   { id: "cgv-daejeon", chain: "cgv", name: "CGV 대전", region: "대전", city: "중구", address: "대전 중구 계백로 1700", officialUrl: cgv("0007") },
@@ -45,6 +51,9 @@ const ALL_THEATERS: Theater[] = [
   { id: "lotte-jinju-mbcine", chain: "lotte", name: "롯데시네마 엠비씨네(진주)", region: "경남", city: "진주시", address: "경남 진주시 가호로 13", officialUrl: lotte("9105") },
   { id: "lotte-paju-unjeong", chain: "lotte", name: "롯데시네마 파주운정", region: "경기", city: "파주시", address: "경기 파주시 청암로17번길 17", officialUrl: lotte("3034") },
   { id: "lotte-suwon", chain: "lotte", name: "롯데시네마 수원", region: "경기", city: "수원시", address: "경기 수원시 권선구 세화로 134", officialUrl: lotte("3024") },
+  { id: "lotte-suji", chain: "lotte", name: "롯데시네마 수지", region: "경기", city: "용인시", address: "경기 용인시 수지구 성복2로 38", officialUrl: lotte("3044") },
+  { id: "lotte-gwangmyeong-outlet", chain: "lotte", name: "롯데시네마 광명아울렛", region: "경기", city: "광명시", address: "경기 광명시 일직로 17", officialUrl: lotte("3025") },
+  { id: "lotte-dongtan", chain: "lotte", name: "롯데시네마 동탄", region: "경기", city: "화성시", address: "경기 화성시 동탄역로 160", officialUrl: lotte("3048") },
   { id: "lotte-pangyo", chain: "lotte", name: "롯데시네마 판교(창조경제밸리)", region: "경기", city: "성남시", address: "경기 성남시 수정구 창업로 18", officialUrl: lotte("3047") },
   { id: "mega-coex", chain: "megabox", name: "메가박스 코엑스", region: "서울", city: "강남구", address: "서울 강남구 영동대로 513", officialUrl: megabox("1351") },
   { id: "mega-dongdaegu", chain: "megabox", name: "메가박스 대구신세계(동대구)", region: "대구", city: "동구", address: "대구 동구 동부로 149", officialUrl: megabox("7011") },
@@ -52,6 +61,7 @@ const ALL_THEATERS: Theater[] = [
   { id: "mega-suwon-ak", chain: "megabox", name: "메가박스 수원AK플라자(수원역)", region: "경기", city: "수원시", address: "경기 수원시 팔달구 덕영대로 924", officialUrl: megabox("0052") },
   { id: "mega-suwon-starfield", chain: "megabox", name: "메가박스 수원스타필드", region: "경기", city: "수원시", address: "경기 수원시 장안구 수성로 175", officialUrl: megabox("0062") },
   { id: "mega-bundang", chain: "megabox", name: "메가박스 분당", region: "경기", city: "성남시", address: "경기 성남시 분당구 황새울로 332", officialUrl: megabox("4631") },
+  { id: "mega-hanam", chain: "megabox", name: "메가박스 하남스타필드", region: "경기", city: "하남시", address: "경기 하남시 미사대로 750", officialUrl: megabox("4651") },
 ];
 
 const theaterIdsWithScreens = new Set(SCREENS.map((s) => s.theaterId));
